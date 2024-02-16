@@ -7,6 +7,7 @@ import AdminPage from "./pages/AdminPage";
 import ProyectoPage from "./pages/ProyectoPage";
 import ResultadosPage from "./pages/ResultadosPage";
 import MejoraPage from "./pages/MejoraPage";
+import ContactoPage from "./pages/ContactoPage";
 
 function App() {
   const router = createBrowserRouter([
