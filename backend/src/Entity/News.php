@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\NewsRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Metadata\ApiResource;
 
@@ -29,6 +30,9 @@ class News
 
     #[ORM\ManyToOne(inversedBy: 'news')]
     private ?User $userID = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $pubDate = null;
 
     public function getId(): ?int
     {
@@ -91,6 +95,18 @@ class News
     public function setUserID(?User $userID): static
     {
         $this->userID = $userID;
+
+        return $this;
+    }
+
+    public function getPubDate(): ?\DateTimeInterface
+    {
+        return $this->pubDate;
+    }
+
+    public function setPubDate(\DateTimeInterface $pubDate): static
+    {
+        $this->pubDate = $pubDate;
 
         return $this;
     }
