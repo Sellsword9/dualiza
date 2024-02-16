@@ -25,7 +25,6 @@ class NewsController extends AbstractController
     }
 
     #[Route('/new', name: 'app_news_new', methods: ['GET', 'POST'])]
-    #[isGranted("ROLE_USER")]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $news = new News();
