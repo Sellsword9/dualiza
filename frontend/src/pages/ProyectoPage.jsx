@@ -1,7 +1,7 @@
 
 const ProyectoPage = () => {
   return (
-    <div>ProyectoPage</div>
+    <div>ProyectoPage Cristina</div>
   )
 }
 
