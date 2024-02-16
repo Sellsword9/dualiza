@@ -12,10 +12,13 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+
 
 class RegistrationController extends AbstractController
 {
     #[Route('/register', name: 'app_register')]
+    #[isGranted("ROLE_ADMIN")]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, LoginAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
     {
         $user = new User();
@@ -24,12 +27,12 @@ class RegistrationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
-            $user->setPassword(
-                $userPasswordHasher->hashPassword(
-                    $user,
-                    $form->get('plainPassword')->getData()
-                )
-            );
+            // $user->setPassword(
+            //     $userPasswordHasher->hashPassword(
+            //         $user,
+            //         $form->get('plainPassword')->getData()
+            //     )
+            // );
 
             $entityManager->persist($user);
             $entityManager->flush();
