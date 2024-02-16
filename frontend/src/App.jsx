@@ -16,11 +16,12 @@ function App() {
       errorElement: <ErrorPage />,
       children: [
         {index: true,element: <ProyectoPage />},
-        { path: "/login", element: <LoginPage /> },
-        { path: "/resultados", element: <ResultadosPage /> },
-        { path: "/mejora", element: <MejoraPage /> },
-        { path: "/noticias", element: <NoticiasPage /> },
-        { path: "/admin", element: <AdminPage /> },
+        { path: "login", element: <LoginPage /> },
+        { path: "resultados", element: <ResultadosPage /> },
+        { path: "mejora", element: <MejoraPage /> },
+        { path: "noticias", element: <NoticiasPage /> },
+        { path: "admin", element: <AdminPage /> },
+        { path: "contacto", element: <ContactoPage />}
       ],
     },
   ]);
