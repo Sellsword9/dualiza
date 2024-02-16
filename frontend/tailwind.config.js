@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {},
     colors: {
-      "orange-custom": "e75129"
+      "orange-custom": "#e75129",
+      
     }
   },
   plugins: [],
