@@ -9,3 +9,25 @@ async function fetchNoticias() {
 }
 
 export { fetchNoticias };
+
+export const handleLogin = async (username, password) => {
+  try {
+    const response = await fetch('/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username, password }),
+    });
+
+    if (response.ok) {
+      // El login fue exitoso, realiza las acciones necesarias
+      console.log('Login exitoso');
+    } else {
+      // El login falló, maneja el error
+      console.error('Error al intentar iniciar sesión');
+    }
+  } catch (error) {
+    console.error('Error en la solicitud al servidor', error);
+  }
+};
