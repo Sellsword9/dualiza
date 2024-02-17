@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <header className="flex justify-between items-center p-4 bg-gradient-to-r from-azul-oscuro to-azul-negro text-white w-full h-40">
       <div className='flex justify-between items-center w-full'>
-        <img src={Logo} className='h-44' alt="logo" />
+        <a href='/'><img src={Logo} className='h-44' alt="logo" /></a>
 
         <nav>
           <ul className="list-none p-6 flex">
