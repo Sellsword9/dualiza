@@ -101,10 +101,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->password;
     }
 
-    public function setPassword(string $plainPassword, UserPasswordHasherInterface $passwordHasher): static
+    public function setPassword(string $plainPassword): static
     {
-        // Utilizar el password hasher para cifrar la contraseña
-        $this->password = $passwordHasher->hashPassword($this, $plainPassword);
+        $this->password = $plainPassword;
 
         return $this;
     }
