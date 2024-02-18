@@ -8,6 +8,7 @@ import ProyectoPage from "./pages/ProyectoPage";
 import ResultadosPage from "./pages/ResultadosPage";
 import MejoraPage from "./pages/MejoraPage";
 import ContactoPage from "./pages/ContactoPage";
+import { AuthProvider } from "./context/AuthContext";
 
 function App() {
   const router = createBrowserRouter([
@@ -26,7 +27,11 @@ function App() {
       ],
     },
   ]);
-  return <RouterProvider router={router} />;
+  return (
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
+  )
 }
 
 export default App;

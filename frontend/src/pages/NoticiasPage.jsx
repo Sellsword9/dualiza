@@ -1,11 +1,12 @@
-// NoticiasPage.js
-
 import { useEffect, useState } from 'react';
 import { fetchNoticias } from '../components/utils/apiService';
 import NoticiasComponent from '../components/NoticiasComponent';
+import NoticiasEdit from '../components/NoticiasEdit';
+import Spinner from '../components/Spinner'; // Asegúrate de tener un componente Spinner
 
 const NoticiasPage = () => {
   const [noticias, setNoticias] = useState([]);
+  const [cargandoNoticias, setCargandoNoticias] = useState(true);
 
   useEffect(() => {
     const obtenerNoticias = async () => {
@@ -15,6 +16,9 @@ const NoticiasPage = () => {
         setNoticias(noticiasData);
       } catch (error) {
         console.error('Error al obtener noticias:', error);
+      } finally {
+        // Marcar que las noticias han terminado de cargarse
+        setCargandoNoticias(false);
       }
     };
 
@@ -23,7 +27,12 @@ const NoticiasPage = () => {
 
   return (
     <div>
-      <NoticiasComponent noticiasData={noticias}/>
+      <NoticiasEdit />
+      {cargandoNoticias ? (
+        <Spinner /> // Muestra el spinner mientras las noticias se están cargando
+      ) : (
+        <NoticiasComponent noticiasData={noticias} />
+      )}
     </div>
   );
 };
