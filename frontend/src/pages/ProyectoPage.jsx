@@ -65,9 +65,9 @@ const ProyectoPage = () => {
           </div>
         </div>
 
-        <div className='p-7 mx-4 md:mx-32 bg-azul-claro text-center rounded-lg shadow-md md:h-[70rem] lg:h-[30rem] md:items-center md:justify-center shadow-azul-semi-oscuro text-white'>
+        <div className='p-7 mx-4 mb-10 md:mx-32 bg-azul-claro text-center rounded-lg shadow-md md:h-[60rem] lg:h-[30rem] md:items-center md:justify-center shadow-azul-semi-oscuro text-white'>
           <h2 className='text-white text-2xl font-bold pt-4 pb-6'>Colaboradores</h2>
-          <div style={{display:"flex", alignItems:"center", justifyContent:"center"}} className='lg:flex lg:flex-row lg:m-10 sm:flex-col md:h-70 lg:h-80 sm: flex-col'>
+          <div style={{display:"flex", alignItems:"center", justifyContent:"center"}} className='lg:flex lg:flex-row  sm:flex-col md:h-70 lg:h-80 sm: flex-col'>
             <img className="h-20 md:h-30 m-3 rounded-lg shadow-lg shadow-azul-negro" src={albaytarLogo} alt="logo2" />
             <img className="lg:h-[40rem] md:h-[30rem] m-3 rounded-lg shadow-azul-negro" src={hlanzLogo} alt="logo1" />
             <img className="h-24 md:h-32 m-3 rounded-lg shadow-lg shadow-azul-negro" src={virdenLogo} alt="logo3" />
