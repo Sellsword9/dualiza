@@ -31,10 +31,10 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col justify-center sm:py-12">
+    <div className="">
       <div className="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
-        {/* ... (otros códigos) */}
         <div className="px-5 py-7">
+        <img className="mx-auto mb-8" src="src\assets\LogoPositivoNoFondo.png" alt="logo hlanz" />
           <label className="font-semibold text-sm text-gray-600 pb-1 block">
             Usuario
           </label>

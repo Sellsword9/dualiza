@@ -27,11 +27,14 @@ const NoticiasPage = () => {
 
   return (
     <div>
-      <NoticiasEdit />
+      
       {cargandoNoticias ? (
         <Spinner /> // Muestra el spinner mientras las noticias se están cargando
       ) : (
+        <div>
+        <NoticiasEdit />
         <NoticiasComponent noticiasData={noticias} />
+        </div>
       )}
     </div>
   );
