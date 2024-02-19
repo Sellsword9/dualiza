@@ -29,7 +29,7 @@ const NoticiasPage = () => {
     <div>
       
       {cargandoNoticias ? (
-        <Spinner /> // Muestra el spinner mientras las noticias se están cargando
+        <Spinner mensaje="Cargando noticias..."/> // Muestra el spinner mientras las noticias se están cargando
       ) : (
         <div>
         <NoticiasEdit />

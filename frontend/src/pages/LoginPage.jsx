@@ -27,7 +27,6 @@ const LoginPage = () => {
     // Aquí puedes enviar los datos de usuario y contraseña al servidor
     console.log("Username:", username);
     console.log("Password:", password);
-    // También puedes realizar la lógica de autenticación aquí
   };
 
   return (

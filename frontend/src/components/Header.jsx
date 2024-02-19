@@ -2,9 +2,13 @@ import { Link } from 'react-router-dom';
 import Logo from '../assets/LogoNegativoNoFondo.png'; // Importa la imagen del logo
 
 
-const Header = () => {
-  // Define el estado para controlar si el menú está abierto o cerrado
+const Header = ({ isLogged, role, setUsuarioAutenticado }) => {
+  const usuarioAutenticado = isLogged;
+  const rolUsuario = role;
 
+  const handleLogout = () => {
+    setUsuarioAutenticado(false);
+  };
   return (
     <header className="flex justify-between items-center p-4 bg-gradient-to-r from-azul-oscuro to-azul-negro text-white w-full h-40">
       <div className='flex justify-between items-center w-full'>
@@ -15,7 +19,10 @@ const Header = () => {
             <Link to="/resultados"><li className="inline mr-6 bordeLinks text-white bg-orange-custom hover:bg-orange-700 hover:text-gray-300 rounded-md lg:pl-16 lg:pr-16 md:py-2 md:pl-4 md:pr-4 sm:py-2 sm:pl-2 sm:pr-2">Resultados obtenidos</li></Link>
             <Link to="/mejora"><li className="inline text-white mr-6 bordeLinks bg-orange-custom hover:bg-orange-700 hover:text-gray-300  rounded-md lg:pl-16 lg:pr-16 md:py-2 md:pl-4 md:pr-4 sm:py-2 sm:pl-2 sm:pr-2">Mejora tu centro</li></Link>
             <Link to="/noticias"><li className="inline text-white mr-6 bordeLinks bg-orange-custom hover:bg-orange-700 hover:text-gray-300  rounded-md lg:pl-16 lg:pr-16 md:py-2 md:pl-4 md:pr-4 sm:py-2 sm:pl-2 sm:pr-2">Noticias</li></Link>
-            <Link to="/login"><li className="inline text-white mr-6 bordeLinks bg-orange-custom hover:bg-orange-700 hover:text-gray-300  rounded-md lg:pl-16 lg:pr-16 md:py-2 md:pl-4 md:pr-4 sm:py-2 sm:pl-2 sm:pr-2">Login</li></Link>
+            {usuarioAutenticado && <Link to="/"><li className="inline text-white mr-6 bordeLinks bg-orange-custom hover:bg-orange-700 hover:text-gray-300  rounded-md lg:pl-16 lg:pr-16 md:py-2 md:pl-4 md:pr-4 sm:py-2 sm:pl-2 sm:pr-2"><button onClick={handleLogout}>Logout</button></li></Link>}
+            {!usuarioAutenticado && <Link to="/login"><li className="inline text-white mr-6 bordeLinks bg-orange-custom hover:bg-orange-700 hover:text-gray-300  rounded-md lg:pl-16 lg:pr-16 md:py-2 md:pl-4 md:pr-4 sm:py-2 sm:pl-2 sm:pr-2">Login</li></Link>}
+            {rolUsuario.includes("ROLE_ADMIN") && <Link to="/admin"><li className="inline text-white mr-6 bordeLinks bg-orange-custom hover:bg-orange-700 hover:text-gray-300  rounded-md lg:pl-16 lg:pr-16 md:py-2 md:pl-4 md:pr-4 sm:py-2 sm:pl-2 sm:pr-2">Admin</li></Link>
+}
 
             {/* <li className='text-white inline'>oscurecer/aclarar</li> */}
           </ul>

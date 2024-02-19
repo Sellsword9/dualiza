@@ -5,7 +5,7 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [usuarioAutenticado, setUsuarioAutenticado] = useState(true);//Ponemos hardcodeando que si hay usuario
-  const [rolUsuario, setRolUsuario] = useState("ROLE_EDITOR");
+  const [rolUsuario, setRolUsuario] = useState(["ROLE_ADMIN"]);
 
   const handleLogin = (rol) => {
     setUsuarioAutenticado(true);

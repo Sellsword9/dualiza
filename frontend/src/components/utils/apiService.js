@@ -10,6 +10,13 @@ async function fetchNoticias() {
 
 export { fetchNoticias };
 
+async function fetchUsuarios() {
+  const response = await fetch(`${API_BASE_URL}/users`);
+  const data = await response.json();
+  return data;
+}
+
+export { fetchUsuarios };
 export const handleLogin = async (username, password) => {
   try {
     const response = await fetch('/api/login', {

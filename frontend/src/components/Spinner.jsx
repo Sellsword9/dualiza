@@ -1,4 +1,5 @@
-const Spinner = () => {
+const Spinner = ({mensaje}) => {
+  const mensajeSpinner = mensaje;
   return (
     <div aria-label="Loading..." role="status" className="flex items-center justify-center h-screen">
       <div className="flex flex-col items-center space-y-2 p-4 bg-white ">
@@ -18,7 +19,7 @@ const Spinner = () => {
         <line x1="60.1" y1="60.1" x2="82.7" y2="82.7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="24">
         </line>
     </svg>
-    <span className="text-4xl font-medium text-gray-500">Cargando noticias...</span>
+    <span className="text-4xl font-medium text-gray-500">{mensajeSpinner}</span>
       </div>
     </div>
   );
