@@ -2,6 +2,7 @@ import React from 'react'
 import fotovoltaica from '../assets/resultados/fotovoltaica.png'
 import Resultado from '../components/Resultado'
 import consumohlanz from '../assets/resultados/consumohlanz.png'
+import factura from '../assets/resultados/facturacionhlanz.png'
 const ResultadosPage = () => {
   return (
     <div className='bg-gris-oscuro'>
@@ -23,7 +24,7 @@ const ResultadosPage = () => {
           </ul>
         </div>
         <div>
-          <table className='border-separate border-spacing-4 rounded-2xl m-6 p-6 bg-gradient-to-b mr-10 ml-10 from-azul-negro to-azul-semi-oscuro'>
+          <table className='border-separate border-spacing-4 rounded-2xl m-6 p-6 bg-gradient-to-b mr-10 ml-10 from-azul-negro to-azul-semi-oscuro text-center font-semibold'>
             <thead>
               <tr>
                 <th className='text-orange-custom'>PERIODO FACTURACIÓN</th>
@@ -99,6 +100,9 @@ const ResultadosPage = () => {
               </tr>
             </tbody>
           </table>
+        </div>
+        <div>
+          <Resultado img={factura} />
         </div>
       </div>
     </div>
