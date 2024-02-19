@@ -7,11 +7,12 @@ const ResultadosPage = () => {
   return (
     <div className='bg-gris-oscuro'>
       <div className='flex flex-col justify-center items-center'>
-        <h1 className='text-2xl text-orange-custom w-auto bg-gris-claro p-4 rounded-md m-8 cursor-pointer'> Instalación fotovoltaica</h1>
+        <h1 className='text-3xl text-orange-custom w-auto bg-gris-claro p-8 rounded-md m-8 cursor-pointer'> Instalación fotovoltaica</h1>
         <Resultado img={fotovoltaica} />
       </div>
       <div className='flex flex-col justify-center items-center'>
-        <h1 className='text-2xl text-orange-custom w-auto bg-gris-claro p-4 rounded-md m-8 cursor-pointer'> Consumos eléctricos </h1>
+        <h1 className='text-3xl text-orange-custom w-auto bg-gris-claro p-8 rounded-md m-8 cursor-pointer'> Consumos eléctricos </h1>
+        <h2 className='text-xl text-white m-6 p-6 bg-gradient-to-b mr-10 ml-10 from-azul-negro to-azul-semi-oscuro rounded-3xl '>Hermenegildo Lanz</h2>
         <div className='flex flex-row justify-center items-center'>
           <Resultado img={consumohlanz} />
           <p className='w-1/3 p-8 text-azul-oscuro text-2xl font-bold'>Los principales focos de consumo eléctrico están presentes en receptores como ordenadores, monitores, altavoces, impresoras, proyectores, equipos de iluminación, equipos de climatización y ventilación colectiva, split y radiadores eléctricos, principalmente. </p>
