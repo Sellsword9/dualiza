@@ -1,8 +1,11 @@
 import { useState } from "react";
 
-const UserEdit = ({ users }) => {
+const UserEdit = ({ users, setShowDeleteModal }) => {
   const [editedUser, setEditedUser] = useState(null);
 
+  const handleDelete = () => {
+    setShowDeleteModal(true)
+  };
   const handleEditClick = (user) => {
     setEditedUser(user);
   };
@@ -37,8 +40,11 @@ const UserEdit = ({ users }) => {
         <div key={usuario["@id"]} className="flex flex-col m-4 overflow-hidden bg-white p-4 border-solid border-2 border-azul-claro rounded-lg shadow-md">
           <h3 className="text-xl font-bold mb-2 overflow-ellipsis overflow-hidden">Nombre de usuario: {usuario.username}</h3>
           <p>Roles: {usuario.roles.map((rol) => <span key={rol}>{rol} </span>)}</p>
-          <button className="bg-blue-500 text-white p-2 mt-2 rounded-md" onClick={() => handleEditClick(usuario)}>
+          <button className="bg-blue-600 hover:bg-blue-800 text-white p-2 mt-2 rounded-md" onClick={() => handleEditClick(usuario)}>
             Editar Usuario
+          </button>
+          <button className="bg-red-600 hover:bg-red-800 text-white p-2 mt-2 rounded-md" onClick={() => handleDelete()}>
+            Borrar Usuario
           </button>
         </div>
       ))}

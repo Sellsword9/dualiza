@@ -2,13 +2,15 @@ import { useEffect, useState } from "react";
 import { fetchUsuarios } from "../components/utils/apiService";
 import UserInfo from "../components/UserInfo";
 import UserEdit from "../components/UserEdit";
+import DeleteModal from "../components/DeleteModal";
 
 const AdminPage = () => {
   const [cargandoUsers, setCargandoUsers] = useState(true);
   const [users, setUsers] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
   const [mensajeEditar, setMensajeEditar] = useState("Editar usuarios");
-  const [isDeleting, setIsDeleting] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+
 
   const handleEditUser = () => {
     setIsEditing(!isEditing);
@@ -17,10 +19,20 @@ const AdminPage = () => {
     );
   };
 
-  const handleDelete = () => {
-    setIsDeleting(!isDeleting);
-    // Additional logic for deleting if needed
+  const handleDeleteConfirm = () => {
+    // Call your deleteUserApi() method here
+    // ...
+
+    // Close the modal and reset the state
+    setShowDeleteModal(false);
+    // setEditedUser(null);
   };
+
+  const handleDeleteCancel = () => {
+    // Close the modal and reset the state
+    setShowDeleteModal(false);
+  };
+
 
   useEffect(() => {
     const obtenerUsuarios = async () => {
@@ -49,17 +61,11 @@ const AdminPage = () => {
               {mensajeEditar}
             </button>
           </div>
-          <div>
-            <button
-              className="bg-red-600 hover:bg-red-800 p-4 m-4 border-black rounded-md text-white"
-              onClick={handleDelete}
-            >
-              Borrar usuarios
-            </button>
-          </div>
+          
         </div>
         {isEditing && (
           <UserEdit
+          setShowDeleteModal={setShowDeleteModal}
             users={users}
             cargandoUsers={cargandoUsers}
             setUsers={setUsers}
@@ -72,6 +78,7 @@ const AdminPage = () => {
             setUsers={setUsers}
           />
         )}
+         {showDeleteModal && <DeleteModal handleDeleteCancel={handleDeleteCancel} handleDeleteConfirm={handleDeleteConfirm}/>}
       </div>
     </>
   );

@@ -10,13 +10,13 @@ const NoticiasEdit = () => {
     <div>
       {esEditor && (
         <div className="bg-gris-claro flex flex-row justify-end p-4 ">
-          <button className="p-2 m-4 bg-green-600 text-white hover:bg-green-800 rounded-md border-solid ">
+          <button className="p-4   m-2 bg-orange-custom text-white hover:bg-orange-800 rounded-md border-solid ">
             Añadir noticias
           </button>
-          <button className="p-2 m-4 bg-yellow-600 text-white hover:bg-yellow-800 rounded-md border-solid ">
+          <button className="p-4   m-2 bg-blue-600 text-white hover:bg-blue-800 rounded-md border-solid ">
             Editar noticias
           </button>
-          <button className="p-2 m-4 bg-red-600 text-white hover:bg-red-800 rounded-md border-solid ">
+          <button className="p-4   m-2 bg-red-600 text-white hover:bg-red-800 rounded-md border-solid ">
             Borrar noticias
           </button>
         </div>
