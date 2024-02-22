@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import Logo from '../assets/LogoNegativoNoFondo.png'; // Importa la imagen del logo
 
-
 const Header = ({ isLogged, role, setUsuarioAutenticado }) => {
   const usuarioAutenticado = isLogged;
   const rolUsuario = role;
@@ -9,67 +8,103 @@ const Header = ({ isLogged, role, setUsuarioAutenticado }) => {
   const handleLogout = () => {
     setUsuarioAutenticado(false);
   };
+
   return (
     <header className="flex justify-between items-center p-4 bg-gradient-to-r from-azul-oscuro to-azul-negro text-white w-full h-40">
-      <div className='flex justify-between items-center w-full'>
-        <a href='/'><img src={Logo} className='h-44' alt="logo" /></a>
-        <nav>
-          <ul className="list-none p-6 flex">
-            <Link to="/"><li className="inline mr-6 bordeLinks bg-orange-custom hover:bg-orange-700 hover:text-gray-300 py-3 text-white  rounded-md lg:pl-16 lg:pr-16 md:py-2 md:pl-4 md:pr-4 sm:py-2 sm:pl-2 sm:pr-2">Proyecto</li></Link>
-            <Link to="/resultados"><li className="inline mr-6 bordeLinks text-white bg-orange-custom hover:bg-orange-700 hover:text-gray-300 rounded-md lg:pl-16 lg:pr-16 md:py-2 md:pl-4 md:pr-4 sm:py-2 sm:pl-2 sm:pr-2">Resultados obtenidos</li></Link>
-            <Link to="/mejora"><li className="inline text-white mr-6 bordeLinks bg-orange-custom hover:bg-orange-700 hover:text-gray-300  rounded-md lg:pl-16 lg:pr-16 md:py-2 md:pl-4 md:pr-4 sm:py-2 sm:pl-2 sm:pr-2">Mejora tu centro</li></Link>
-            <Link to="/noticias"><li className="inline text-white mr-6 bordeLinks bg-orange-custom hover:bg-orange-700 hover:text-gray-300  rounded-md lg:pl-16 lg:pr-16 md:py-2 md:pl-4 md:pr-4 sm:py-2 sm:pl-2 sm:pr-2">Noticias</li></Link>
-            {usuarioAutenticado && <Link to="/"><li className="inline text-white mr-6 bordeLinks bg-orange-custom hover:bg-orange-700 hover:text-gray-300  rounded-md lg:pl-16 lg:pr-16 md:py-2 md:pl-4 md:pr-4 sm:py-2 sm:pl-2 sm:pr-2"><button onClick={handleLogout}>Logout</button></li></Link>}
-            {!usuarioAutenticado && <Link to="/login"><li className="inline text-white mr-6 bordeLinks bg-orange-custom hover:bg-orange-700 hover:text-gray-300  rounded-md lg:pl-16 lg:pr-16 md:py-2 md:pl-4 md:pr-4 sm:py-2 sm:pl-2 sm:pr-2">Login</li></Link>}
-            {rolUsuario.includes("ROLE_ADMIN") && <Link to="/admin"><li className="inline text-white mr-6 bordeLinks bg-orange-custom hover:bg-orange-700 hover:text-gray-300  rounded-md lg:pl-16 lg:pr-16 md:py-2 md:pl-4 md:pr-4 sm:py-2 sm:pl-2 sm:pr-2">Admin</li></Link>
-}
-
-            {/* <li className='text-white inline'>oscurecer/aclarar</li> */}
+      <div className="flex justify-between items-center w-full">
+        <a href="/">
+          <img src={Logo} className="h-44" alt="logo" />
+        </a>
+        <nav className="md:hidden">
+          <button className="mobile-menu-button">
+            <svg
+              className="h-6 w-6 fill-current text-white"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M4 6h16a1 1 0 0 0 0-2H4a1 1 0 0 0 0 2zm0 5h16a1 1 0 0 0 0-2H4a1 1 0 0 0 0 2zm0 5h16a1 1 0 0 0 0-2H4a1 1 0 0 0 0 2z"
+              />
+            </svg>
+          </button>
+          <ul className="hidden absolute top-0 left-0 w-full bg-gray-800 pt-16">
+            <li className="block py-2 px-4">
+              <Link to="/proyecto" className="nav-link">Proyecto</Link>
+            </li>
+            <li className="block py-2 px-4">
+              <Link to="/resultados" className="nav-link">Resultados obtenidos</Link>
+            </li>
+            <li className="block py-2 px-4">
+              <Link to="/mejora" className="nav-link">Mejora tu centro</Link>
+            </li>
+            <li className="block py-2 px-4">
+              <Link to="/noticias" className="nav-link">Noticias</Link>
+            </li>
+            {usuarioAutenticado ? (
+              <li className="block py-2 px-4">
+                <button className="nav-link" onClick={handleLogout}>Logout</button>
+              </li>
+            ) : (
+              <li className="block py-2 px-4">
+                <Link to="/login" className="nav-link">Login</Link>
+              </li>
+            )}
+            {rolUsuario.includes("ROLE_ADMIN") && (
+              <li className="block py-2 px-4">
+                <Link to="/admin" className="nav-link">Admin</Link>
+              </li>
+            )}
           </ul>
         </nav>
+        <div className="hidden md:block">
+          <ul className="list-none p-6 flex">
+            <Link to="/proyecto">
+              <li className="inline mr-6 py-3 px-4 text-white rounded-md lg:pl-16 lg:pr-16 md:py-2 md:pl-4 md:pr-4 sm:py-2 sm:pl-2 sm:pr-2 bg-transparent hover:bg-orange-custom hover:text-gray-300 transition-colors duration-300">
+                Proyecto
+              </li>
+            </Link>
+            <Link to="/resultados">
+              <li className="inline mr-6 py-3 px-4 text-white rounded-md lg:pl-16 lg:pr-16 md:py-2 md:pl-4 md:pr-4 sm:py-2 sm:pl-2 sm:pr-2 bg-transparent hover:bg-orange-custom hover:text-gray-300 transition-colors duration-300">
+                Resultados obtenidos
+              </li>
+            </Link>
+            <Link to="/mejora">
+              <li className="inline mr-6 py-3 px-4 text-white rounded-md lg:pl-16 lg:pr-16 md:py-2 md:pl-4 md:pr-4 sm:py-2 sm:pl-2 sm:pr-2 bg-transparent hover:bg-orange-custom hover:text-gray-300 transition-colors duration-300">
+                Mejora tu centro
+              </li>
+            </Link>
+            <Link to="/noticias">
+              <li className="inline mr-6 py-3 px-4 text-white rounded-md lg:pl-16 lg:pr-16 md:py-2 md:pl-4 md:pr-4 sm:py-2 sm:pl-2 sm:pr-2 bg-transparent hover:bg-orange-custom hover:text-gray-300 transition-colors duration-300">
+                Noticias
+              </li>
+            </Link>
+            {usuarioAutenticado ? (
+              <Link to="/">
+                <li className="inline mr-6 py-3 px-4 text-white rounded-md lg:pl-16 lg:pr-16 md:py-2 md:pl-4 md:pr-4 sm:py-2 sm:pl-2 sm:pr-2 bg-transparent hover:bg-orange-custom hover:text-gray-300 transition-colors duration-300">
+                  <button onClick={handleLogout}>Logout</button>
+                </li>
+              </Link>
+            ) : (
+              <Link to="/login">
+                <li className="inline mr-6 py-3 px-4 text-white rounded-md lg:pl-16 lg:pr-16 md:py-2 md:pl-4 md:pr-4 sm:py-2 sm:pl-2 sm:pr-2 bg-transparent hover:bg-orange-custom hover:text-gray-300 transition-colors duration-300">
+                  Login
+                </li>
+              </Link>
+            )}
+            {rolUsuario.includes("ROLE_ADMIN") && (
+              <Link to="/admin">
+                <li className="inline mr-6 py-3 px-4 text-white rounded-md lg:pl-16 lg:pr-16 md:py-2 md:pl-4 md:pr-4 sm:py-2 sm:pl-2 sm:pr-2 bg-transparent hover:bg-orange-custom hover:text-gray-300 transition-colors duration-300">
+                  Admin
+                </li>
+              </Link>
+            )}
+          </ul>
+        </div>
       </div>
     </header>
   );
 };
 
 export default Header;
-
-
-//  <footer className="p-8 flex flex-col justify-center items-center  bg-gradient-to-b from-azul-semi-oscuro to-azul-oscuro text-white w-full h-90">
-//         <div className="grid lg:grid-cols-3 md:grid-rows-3 gap-4 grid-rows-3">
-//           <div className="col-span-3 md:col-span-1 flex justify-center items-center sm:flex-col">
-//             <div className="flex items-center sm:flex-col md:flex-col">
-//               <img className="h-14 md:h-30 m-3 rounded-lg shadow-lg shadow-azul-negro" src={albaytarLogo} alt="logo2" />
-//               <div className="ml-3">
-//                 <p className="font-bold mb-4 text-lg">IES AL-BAYTAR</p>
-//                 <p className="font-semibold pb-5">Dpto. Instalación y Mantenimiento</p>
-//                 <p className="pl-4">David Racero. Email: dracpat976@g.educaand.es</p>
-//               </div>
-//             </div>
-//           </div>
-//           <div className="col-span-3 md:col-span-1 flex justify-center items-center mr-8">
-//             <div className="flex items-center sm:flex-col md:flex-col">
-//               <img className="h-96 md:h-30 m-3" src={hlanzLogo} alt="logo2" />
-//               <div className="ml-3">
-//                 <p className="font-bold mb-4 text-lg">IES POLITÉCNICO HERMENEGILDO LANZ</p>
-//                 <p className="font-semibold pb-3">Dpto. Instalación y Mantenimiento. </p>
-//                 <p className="pb-5 pl-4">Maria Dolores Sáenz Pajares. Email: msaepaj412@g.educaand.es</p>
-//                 <p className="font-semibold pb-3">Dpto. Energía y Agua.</p>
-//                 <p className="font-semibold pb-3">Dpto. Edificación y Obra civil.</p>
-//                 <p className="font-semibold pb-3">Dpto. Electricidad y Electrónica</p>
-//               </div>
-//             </div>
-//           </div>
-//           <div className="col-span-3 md:col-span-1 flex justify-center items-center pl-8">
-//             <div className="flex items-center sm:flex-col md:flex-col">
-//               <img className="h-20 md:h-30 m-3 rounded-lg shadow-lg shadow-azul-negro" src={virgenLogo} alt="logo2" />
-//               <div className="ml-3">
-//                 <p className="font-bold mb-4 text-lg">CIFP VIRGEN DE GRACIA</p>
-//                 <p className="font-semibold pb-3">Dpto. Energía y Agua.</p>
-//                 <p className="pl-4">Raúl Morales Ocaña. Email: rmo14@educastillalamancha.es</p>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//         <p className="text-xl">Haz click <Link to="/contacto" className="text-orange-custom text-2xl font-bold underline mt-10">aquí</Link> para contactar con nosotros</p>
-//     </footer>
