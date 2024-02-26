@@ -105,6 +105,25 @@ const ResultadosPage = () => {
         <div>
           <Resultado img={factura} />
         </div>
+        <p className='w-1/3 p-8 text-azul-oscuro text-2xl font-bold'>El consumo medio mensual se estima en 11.123,75 kWh, el coste medio mensual en 1.728,369 € y la ratio económica del precio de la energía, teniendo en cuenta los datos anteriores, sería de 0,1553 €/kWh.
+          Así pues, los valores de consumos y costes energéticos anuales globales de electricidad se recogen en la siguiente tabla:</p>
+        <table className='flex flex-col justify-center border-separate border-spacing-4 rounded-2xl m-6 p-6 bg-gradient-to-b mr-10 ml-10 from-azul-negro to-azul-semi-oscuro text-center font-semibold'>
+          <caption className='text-orange-custom'>Electricidad</caption>
+          <tbody className='text-gris-claro'>
+            <tr>
+              <td>Consumo eléctrico (kWh/año)</td>
+              <td>133.485</td>
+            </tr>
+            <tr>
+              <td>Coste eléctrico (€/año)</td>
+              <td>20.740,43</td>
+            </tr>
+            <tr>
+              <td>Coste unitario con IVA (€/kWh)</td>
+              <td>0,1553</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   )

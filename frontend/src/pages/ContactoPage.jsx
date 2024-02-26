@@ -1,26 +1,31 @@
-import  { useState } from 'react'
+import React, { useState } from 'react'
 import Logo from '../assets/LogoNegativoNoFondo.png'
 const email = import.meta.env.VITE_EMAIL;
 console.log(email);
 const ContactoPage = () => {
-  const [subject, setSubject] = useState('');
+  const [usermail, setUsermail] = useState('');
   const [body, setBody] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.open(mailtoLink);
-    console.log(mailtoLink);
+
+    emailjs.send(SERVICEID, TEMPLATEID, { usermail, body }, USERID)
+      .then((response) => {
+        alert("Mensaje enviado correctamente");
+      })
+      .catch((error) => {
+        console.error("Something went wrong!");
+      });
   };
 
   return (
     <div className='w-screen bg-gris-oscuro'>
       <div className="w-2/5 bg-gray-600 rounded-lg p-8 flex-col m-auto">
         <h2 className="text-4xl font-bold mb-4 text-white">Contacto</h2>
-        <form onSubmit={handleSubmit} >
+        <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="asunto" className="block text-orange-custom font-bold mb-2 text-xl">Asunto</label>
-            <input type="text" id="asunto" name="subject" value={subject} onChange={(e) => setSubject(e.target.value)}
+            <label htmlFor="usercontactmail" className="block text-orange-custom font-bold mb-2 text-xl">Tu correo</label>
+            <input type="text" id="usercontactmail" name="subject" value={usermail} onChange={(e) => setUsermail(e.target.value)}
               className="w-full px-3 py-2 border-8 rounded-md focus:outline-none focus:border-blue-500" />
           </div>
           <div className="mb-4">
@@ -35,7 +40,7 @@ const ContactoPage = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ContactoPage
+export default ContactoPage;

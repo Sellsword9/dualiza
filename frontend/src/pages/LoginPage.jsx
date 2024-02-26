@@ -1,11 +1,17 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
+import { doSignInWithEmailAndPassword } from "../firebase/auth";
+import { useAuth } from "../context/AuthContext";
 
 const LoginPage = () => {
   const [showForgotPasswordInfo, setShowForgotPasswordInfo] = useState(false);
   const [showHelpInfo, setShowHelpInfo] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  const navigate = useNavigate();
+  
+  const {  handleLogin } = useAuth();
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -14,7 +20,19 @@ const LoginPage = () => {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
-  
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const result = await doSignInWithEmailAndPassword(username, password);
+      handleLogin(result.email);
+      navigate("/");
+    } catch (error) {
+      console.error("Error al iniciar sesión:", error.message);
+      // Manejar el error (puede ser una alerta, etc.)
+    }
+  };
+
   const handleForgotPassword = () => {
     setShowForgotPasswordInfo(true);
   };
@@ -23,57 +41,55 @@ const LoginPage = () => {
     setShowHelpInfo(true);
   };
 
-  const handleLogin = () => {
-    // Aquí puedes enviar los datos de usuario y contraseña al servidor
-    console.log("Username:", username);
-    console.log("Password:", password);
-  };
-
+  // if (usuarioAutenticado) {
+  //   return <Redirect to="/" />;
+  // }
   return (
     <div className="">
       <div className="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
-        <div className="px-5 py-7">
-        <img className="mx-auto mb-8" src="src\assets\LogoPositivoNoFondo.png" alt="logo hlanz" />
-          <label className="font-semibold text-sm text-gray-600 pb-1 block">
-            Usuario
-          </label>
-          <input
-            type="text"
-            className="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"
-            value={username}
-            onChange={handleUsernameChange}
-          />
-          <label className="font-semibold text-sm text-gray-600 pb-1 block">
-            Contraseña
-          </label>
-          <input
-            type="password"  
-            className="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"
-            value={password}
-            onChange={handlePasswordChange}
-          />
-          <button
-            type="button"
-            className="transition duration-200 bg-blue-500 hover:bg-blue-600 focus:bg-blue-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 text-white w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block"
-            onClick={handleLogin}
-          >
-            <span className="inline-block mr-2">Login</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              className="w-4 h-4 inline-block"
+        <form onSubmit={handleSubmit}>
+          <div className="px-5 py-7">
+            <img className="mx-auto mb-8" src="src\assets\LogoPositivoNoFondo.png" alt="logo hlanz" />
+            <label className="font-semibold text-sm text-gray-600 pb-1 block">
+              Usuario
+            </label>
+            <input
+              type="text"
+              className="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"
+              value={username}
+              onChange={handleUsernameChange}
+            />
+            <label className="font-semibold text-sm text-gray-600 pb-1 block">
+              Contraseña
+            </label>
+            <input
+              type="password"
+              className="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"
+              value={password}
+              onChange={handlePasswordChange}
+            />
+            <button
+              type="submit"
+              className="transition duration-200 bg-blue-500 hover:bg-blue-600 focus:bg-blue-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 text-white w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
-            </svg>
-          </button>
-        </div>
+              <span className="inline-block mr-2">Login</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                className="w-4 h-4 inline-block"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </button>
+          </div>
+        </form>
           <div className="py-5">
             <div className="grid grid-cols-2 gap-1">
               <div className="text-center sm:text-left whitespace-nowrap">
