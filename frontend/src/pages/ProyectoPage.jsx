@@ -40,9 +40,8 @@ const ProyectoPage = () => {
             </Slider>
           </div>
         </div>
-        
-        <div className='flex lg:m-32 flex-col md:flex-row m-10 '>
-          <div className='p-7 mb-10 md:mb-0 bg-white rounded-lg shadow-md shadow-azul-semi-oscuro md:mr-20'>
+        <div className='flex lg:m-32 lg:flex-row justify-center items-center   flex-col m-10 '>
+          <div className='p-7 mb-10 lg:mb-0 bg-white rounded-lg shadow-md lg:mr-20 shadow-azul-semi-oscuro '>
             <h2 className='text-orange-custom text-2xl font-bold pb-6 text-center'>Descripción</h2>
             <p className='text-justify'>
                 Los centros educativos deben liderar acciones para mejorar el uso de la energía,

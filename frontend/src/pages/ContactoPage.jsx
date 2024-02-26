@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import Logo from '../assets/LogoNegativoNoFondo.png'
 const email = import.meta.env.VITE_EMAIL;
 console.log(email);

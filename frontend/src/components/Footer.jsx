@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import albaytarLogo from '../assets/proyectoImg/Logo albaytar.png';
 import virgenLogo from '../assets/proyectoImg/02 LOGO CIFP VdG.jpg';
 import hlanzLogo from '../assets/proyectoImg/5 LOGOS IES P H LANZ B-02.png';
@@ -37,7 +36,6 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <p className="text-xl">Haz click <Link to="/contacto" className="text-orange-custom text-2xl font-bold underline mt-10">aquí</Link> para contactar con nosotros</p>
     </footer>
   );
 };
