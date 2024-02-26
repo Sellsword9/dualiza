@@ -10,7 +10,7 @@ const LoginPage = () => {
   const [password, setPassword] = useState('');
 
   const navigate = useNavigate();
-  
+
   const {  handleLogin } = useAuth();
 
   const handleUsernameChange = (e) => {
@@ -25,7 +25,8 @@ const LoginPage = () => {
     e.preventDefault();
     try {
       const result = await doSignInWithEmailAndPassword(username, password);
-      handleLogin(result.email);
+      console.log(result)
+      handleLogin(result.user.uid);
       navigate("/");
     } catch (error) {
       console.error("Error al iniciar sesión:", error.message);
@@ -41,9 +42,6 @@ const LoginPage = () => {
     setShowHelpInfo(true);
   };
 
-  // if (usuarioAutenticado) {
-  //   return <Redirect to="/" />;
-  // }
   return (
     <div className="">
       <div className="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
