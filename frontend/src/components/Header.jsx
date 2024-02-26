@@ -1,13 +1,11 @@
 import { Link } from 'react-router-dom';
 import Logo from '../assets/LogoNegativoNoFondo.png'; // Importa la imagen del logo
-
-const Header = ({ isLogged, role, setUsuarioAutenticado }) => {
+import { useAuth} from '../context/AuthContext.jsx'
+const Header = ({ isLogged, role }) => {
   const usuarioAutenticado = isLogged;
   const rolUsuario = role;
-
-  const handleLogout = () => {
-    setUsuarioAutenticado(false);
-  };
+  const {handleLogout} = useAuth()
+  
 
   return (
     <header className="flex justify-between items-center p-4 bg-gradient-to-r from-azul-oscuro to-azul-negro text-white w-full h-40">
@@ -23,8 +21,8 @@ const Header = ({ isLogged, role, setUsuarioAutenticado }) => {
               viewBox="0 0 24 24"
             >
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M4 6h16a1 1 0 0 0 0-2H4a1 1 0 0 0 0 2zm0 5h16a1 1 0 0 0 0-2H4a1 1 0 0 0 0 2zm0 5h16a1 1 0 0 0 0-2H4a1 1 0 0 0 0 2z"
               />
             </svg>

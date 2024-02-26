@@ -1,18 +1,22 @@
 // AuthContext.js
 import { createContext, useContext, useState } from 'react';
+import { doSignOut } from '../firebase/auth';
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [usuarioAutenticado, setUsuarioAutenticado] = useState(true);//Ponemos hardcodeando que si hay usuario
+  const [usuarioAutenticado, setUsuarioAutenticado] = useState(false);//Ponemos hardcodeando que si hay usuario
   const [rolUsuario, setRolUsuario] = useState(["ROLE_ADMIN"]);
 
-  const handleLogin = (rol) => {
+  const handleLogin = (email) => {
+    console.log(email)
     setUsuarioAutenticado(true);
-    setRolUsuario(rol);
+    console.log("Usuario correcto")
+    // setRolUsuario(rol);
   };
 
-  const handleLogout = () => {
+   const handleLogout = () => {
+    doSignOut();
     setUsuarioAutenticado(false);
     setRolUsuario('');
   };
