@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import Logo from '../assets/LogoNegativoNoFondo.png'; // Importa la imagen del logo
+import Logo from '../assets/LogoNegativoNoFondo.png';
 
 const Header = ({ isLogged, role, setUsuarioAutenticado }) => {
   const usuarioAutenticado = isLogged;
