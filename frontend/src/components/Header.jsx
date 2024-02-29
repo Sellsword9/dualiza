@@ -1,4 +1,4 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../assets/LogoNegativoNoFondo.png'; // Importa la imagen del logo
 
@@ -24,8 +24,8 @@ const Header = ({ isLogged, role, setUsuarioAutenticado }) => {
               viewBox="0 0 24 24"
             >
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M4 6h16a1 1 0 0 0 0-2H4a1 1 0 0 0 0 2zm0 5h16a1 1 0 0 0 0-2H4a1 1 0 0 0 0 2zm0 5h16a1 1 0 0 0 0-2H4a1 1 0 0 0 0 2z"
               />
             </svg>
@@ -107,8 +107,7 @@ const Header = ({ isLogged, role, setUsuarioAutenticado }) => {
               </Link>
             )}
           </ul>
-        </nav>
-
+        </div>
       </div>
     </header>
   );
