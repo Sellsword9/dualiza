@@ -8,7 +8,7 @@ const AddNewsForm = () => {
   const [img, setImg] = useState("")
   const [newURL, setNewURL] = useState("")
   const [userID, setUserID] = useState("")
-  const [pubDate, setPubDate] = useState("")
+  // const [pubDate, setPubDate] = useState("")
 
 
   const handleSubmit = async (e) => {
@@ -21,7 +21,7 @@ const AddNewsForm = () => {
         img: img,
         newURL: newURL,
         userID: userID,
-        pubDate: pubDate
+        // pubDate: pubDate
       });
       console.log("Noticia añadido con id: ", nuevoProducto);
       // Ventana indicando si todo ok
@@ -37,7 +37,7 @@ const AddNewsForm = () => {
       setImg("")
       setNewURL("")
       setUserID("")
-      setPubDate("")
+      // setPubDate("")
       
     } catch (err) {
       console.error(err);
@@ -125,7 +125,7 @@ const AddNewsForm = () => {
           />
         </div>
         {/* Fecha de publicacion de la noticia */}
-        <div className="mb-4">
+        {/* <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="pubDate">
             Fecha de publicación
           </label>
@@ -138,7 +138,7 @@ const AddNewsForm = () => {
             onChange={(e) => setUserID(e.target.value)}
             required
           />
-        </div>
+        </div> */}
         {/* Botón de envío */}
         <div className="flex items-center justify-between">
           <button

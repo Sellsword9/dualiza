@@ -17,21 +17,21 @@ function App() {
       element: <RootPage />,
       errorElement: <ErrorPage />,
       children: [
-        {index: true,element: <ProyectoPage />},
+        { index: true, element: <ProyectoPage /> },
         { path: "login", element: <LoginPage /> },
         { path: "resultados", element: <ResultadosPage /> },
         { path: "mejora", element: <MejoraPage /> },
         { path: "noticias", element: <NoticiasPage /> },
         { path: "admin", element: <AdminPage /> },
-        { path: "contacto", element: <ContactoPage />}
+        { path: "contacto", element: <ContactoPage /> },
       ],
     },
   ]);
   return (
-    <AuthProvider>
-      <RouterProvider router={router} />
-    </AuthProvider>
-  )
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
+  );
 }
 
 export default App;

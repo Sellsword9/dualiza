@@ -2,16 +2,26 @@ import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import AddNewsForm from "./AddNewsForm";
 
-const NoticiasEdit = () => {
+const NoticiasEdit = ({deleteMode, setDeleteMode}) => {
   const {rolUsuario} = useAuth();
   const [addNewsForm, setAddNewsForm] = useState(false)
-  // Verificar si el usuario tiene el rol de "editor"
+  const [deleteText, setDeleteText] = useState("Borrar noticias")
+
   const esEditor = rolUsuario=='ROLE_EDITOR'||rolUsuario=='ROLE_ADMIN';
+  console.log(rolUsuario)
 
-
+  
   const handleNewsForm = () => {
     addNewsForm == false ? setAddNewsForm(true) : setAddNewsForm(false)
   }
+
+  const handleDeleteNews = () => {
+    deleteMode ? (setDeleteMode(false), setDeleteText("Borrar noticias")) : (setDeleteMode(true), setDeleteText("Dejar de noticias"));
+    console.log(deleteMode)
+
+  }
+    
+  
   return (
     <div>
       {esEditor && (
@@ -27,8 +37,8 @@ const NoticiasEdit = () => {
           <button className="p-4  m-2 bg-blue-600 text-white hover:bg-blue-800 rounded-md border-solid ">
             Editar noticias
           </button>
-          <button className="p-4  m-2 bg-red-600 text-white hover:bg-red-800 rounded-md border-solid ">
-            Borrar noticias
+          <button onClick={handleDeleteNews} className="p-4 m-2 bg-red-600 text-white hover:bg-red-800 rounded-md border-solid ">
+            {deleteText}
           </button>
         </div>
         {addNewsForm && <AddNewsForm/>}

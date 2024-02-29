@@ -6,26 +6,30 @@ import { getUsuarioById } from '../firebase/usersApi';
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [usuarioAutenticado, setUsuarioAutenticado] = useState(false);//Ponemos hardcodeando que si hay usuario
+  const [usuarioAutenticado, setUsuarioAutenticado] = useState(false);
   const [rolUsuario, setRolUsuario] = useState([]);
+  const [userData, setUserData] = useState(null); 
 
   const handleLogin = async (uid) => {
-    console.log(uid)
-    const userData = await getUsuarioById(uid)
+    console.log(uid);
+    const userData = await getUsuarioById(uid);
     setUsuarioAutenticado(!!userData);
-    console.log(userData)
-     setRolUsuario(...userData.role);
+    setRolUsuario(...userData.role);
+    setUserData(userData); 
+    console.log(userData);
   };
 
-   const handleLogout = () => {
+  const handleLogout = () => {
     doSignOut();
     setUsuarioAutenticado(false);
     setRolUsuario('');
+    setUserData(null); 
   };
 
   const contextValue = {
     usuarioAutenticado,
     rolUsuario,
+    userData, 
     handleLogin,
     handleLogout,
   };

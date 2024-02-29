@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { fetchUsuarios } from "../components/utils/apiService";
 import UserInfo from "../components/UserInfo";
 import UserEdit from "../components/UserEdit";
 import DeleteModal from "../components/DeleteModal";
+import { getUsuarios } from "../firebase/usersApi";
 
 const AdminPage = () => {
   const [cargandoUsers, setCargandoUsers] = useState(true);
@@ -10,7 +10,6 @@ const AdminPage = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [mensajeEditar, setMensajeEditar] = useState("Editar usuarios");
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-
 
   const handleEditUser = () => {
     setIsEditing(!isEditing);
@@ -20,25 +19,18 @@ const AdminPage = () => {
   };
 
   const handleDeleteConfirm = () => {
-    // Call your deleteUserApi() method here
-    // ...
-
-    // Close the modal and reset the state
     setShowDeleteModal(false);
-    // setEditedUser(null);
   };
 
   const handleDeleteCancel = () => {
-    // Close the modal and reset the state
     setShowDeleteModal(false);
   };
-
 
   useEffect(() => {
     const obtenerUsuarios = async () => {
       try {
-        const response = await fetchUsuarios();
-        setUsers(response["hydra:member"] || []);
+        const response = await getUsuarios();
+        setUsers(response || []);
       } catch (error) {
         console.error("Error al obtener usuarios:", error);
       } finally {
@@ -47,7 +39,8 @@ const AdminPage = () => {
     };
 
     obtenerUsuarios();
-  }, []);
+  }, []); 
+
 
   return (
     <>

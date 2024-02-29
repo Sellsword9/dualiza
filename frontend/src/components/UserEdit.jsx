@@ -22,9 +22,9 @@ const UserEdit = ({ users, setShowDeleteModal }) => {
     const { value, checked } = e.target;
     setEditedUser((prevUser) => ({
       ...prevUser,
-      roles: checked
-        ? [...prevUser.roles, value]
-        : prevUser.roles.filter((role) => role !== value),
+      role: checked
+        ? [...prevUser.role, value]
+        : prevUser.role.filter((role) => role !== value),
     }));
   };
 
@@ -39,7 +39,7 @@ const UserEdit = ({ users, setShowDeleteModal }) => {
       {users.map((usuario) => (
         <div key={usuario["@id"]} className="flex flex-col m-4 overflow-hidden bg-white p-4 border-solid border-2 border-azul-claro rounded-lg shadow-md">
           <h3 className="text-xl font-bold mb-2 overflow-ellipsis overflow-hidden">Nombre de usuario: {usuario.username}</h3>
-          <p>Roles: {usuario.roles.map((rol) => <span key={rol}>{rol} </span>)}</p>
+          <p>Roles: {usuario.role.map((rol) => <span key={rol}>{rol} </span>)}</p>
           <button className="bg-blue-600 hover:bg-blue-800 text-white p-2 mt-2 rounded-md" onClick={() => handleEditClick(usuario)}>
             Editar Usuario
           </button>
@@ -62,20 +62,19 @@ const UserEdit = ({ users, setShowDeleteModal }) => {
               <div>
                 {/* Assuming roles are checkboxes */}
                 <label  className="p-2">
-                  <input type="checkbox" name="admin" value="ROLE_ADMIN" checked={editedUser.roles.includes("ROLE_ADMIN")} onChange={handleRolesChange} />
+                  <input type="checkbox" name="admin" value="ROLE_ADMIN" checked={editedUser.role.includes("ROLE_ADMIN")} onChange={handleRolesChange} />
                   Admin
                 </label>
                 <label className="p-2">
-                  <input type="checkbox" name="editor" value="ROLE_EDITOR" checked={editedUser.roles.includes("ROLE_EDITOR")} onChange={handleRolesChange} />
+                  <input type="checkbox" name="editor" value="ROLE_EDITOR" checked={editedUser.role.includes("ROLE_EDITOR")} onChange={handleRolesChange} />
                   Editor
                 </label>
-                <label className="p-2">
-                  <input type="checkbox" name="user" value="ROLE_USER" checked={editedUser.roles.includes("ROLE_USER")} onChange={handleRolesChange} />
+                {/* <label className="p-2">
+                  <input type="checkbox" name="user" value="ROLE_USER" checked={editedUser.role.includes("ROLE_USER")} onChange={handleRolesChange} />
                   User
-                </label>
+                </label> */}
               </div>
             </label>
-            {/* Add other form fields as needed */}
             <button type="submit" className="bg-blue-500 text-white p-4 rounded-md">
               Guardar Cambios
             </button>

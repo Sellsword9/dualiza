@@ -1,23 +1,23 @@
 import { useEffect, useState } from 'react';
-import { fetchNoticias } from '../components/utils/apiService';
 import NoticiasComponent from '../components/NoticiasComponent';
 import NoticiasEdit from '../components/NoticiasEdit';
-import Spinner from '../components/Spinner'; // Asegúrate de tener un componente Spinner
+import Spinner from '../components/Spinner';
+import { getNoticias } from '../firebase/noticiasApi';
 
 const NoticiasPage = () => {
   const [noticias, setNoticias] = useState([]);
   const [cargandoNoticias, setCargandoNoticias] = useState(true);
+  const [deleteMode, setDeleteMode] = useState(false);
 
   useEffect(() => {
     const obtenerNoticias = async () => {
       try {
-        const response = await fetchNoticias();
-        const noticiasData = response['hydra:member']; // Accede a hydra:member
+        const response = await getNoticias();
+        const noticiasData = response || [];
         setNoticias(noticiasData);
       } catch (error) {
         console.error('Error al obtener noticias:', error);
       } finally {
-        // Marcar que las noticias han terminado de cargarse
         setCargandoNoticias(false);
       }
     };
@@ -27,13 +27,14 @@ const NoticiasPage = () => {
 
   return (
     <div>
-      
       {cargandoNoticias ? (
-        <Spinner mensaje="Cargando noticias..."/> // Muestra el spinner mientras las noticias se están cargando
+        <Spinner mensaje="Cargando noticias..." />
       ) : (
         <div>
-        <NoticiasEdit />
-        <NoticiasComponent noticiasData={noticias} />
+          {typeof deleteMode !== 'undefined' && (
+            <NoticiasEdit setDeleteMode={setDeleteMode} deleteMode={deleteMode} />
+          )}
+          <NoticiasComponent noticiasData={noticias} deleteMode={deleteMode} setDeleteMode={setDeleteMode} />
         </div>
       )}
     </div>
