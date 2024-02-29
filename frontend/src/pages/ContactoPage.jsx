@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import Logo from '../assets/LogoNegativoNoFondo.png'
-const email = import.meta.env.VITE_EMAIL;
-console.log(email);
+
 const ContactoPage = () => {
   const [usermail, setUsermail] = useState('');
   const [body, setBody] = useState('');
@@ -11,10 +10,10 @@ const ContactoPage = () => {
 
     emailjs.send(SERVICEID, TEMPLATEID, { usermail, body }, USERID)
       .then((response) => {
-        alert("Mensaje enviado correctamente");
+        console.log("Success sending email");
       })
       .catch((error) => {
-        console.error("Something went wrong!");
+        console.error("Error: ", error);
       });
   };
 
