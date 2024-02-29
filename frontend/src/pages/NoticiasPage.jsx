@@ -8,7 +8,7 @@ const NoticiasPage = () => {
   const [noticias, setNoticias] = useState([]);
   const [cargandoNoticias, setCargandoNoticias] = useState(true);
   const [deleteMode, setDeleteMode] = useState(false);
-
+  
   useEffect(() => {
     const obtenerNoticias = async () => {
       try {
@@ -23,7 +23,7 @@ const NoticiasPage = () => {
     };
 
     obtenerNoticias();
-  }, []);
+  }, [deleteMode]);
 
   return (
     <div>

@@ -1,4 +1,3 @@
-import React from 'react'
 import fotovoltaica from '../assets/resultados/fotovoltaica.png'
 import Resultado from '../components/Resultado'
 import consumohlanz from '../assets/resultados/consumohlanz.png'

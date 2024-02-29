@@ -1,16 +1,15 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import Logo from '../assets/LogoNegativoNoFondo.png';
+import { useAuth } from '../context/AuthContext';
 
-const Header = ({ isLogged, role, setUsuarioAutenticado }) => {
+const Header = ({ isLogged, role }) => {
   const [isActive, setIsActive] = useState(false);
-
+  const {handleLogout} = useAuth()
   const usuarioAutenticado = isLogged;
   const rolUsuario = role;
 
-  const handleLogout = () => {
-    setUsuarioAutenticado(false);
-  };
+  
 
   const handleToggleDropdown = () => {
     setIsActive(!isActive);

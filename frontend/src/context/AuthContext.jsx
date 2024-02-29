@@ -19,17 +19,18 @@ export const AuthProvider = ({ children }) => {
     console.log(userData);
   };
 
-  const handleLogout = () => {
-    doSignOut();
+  const handleLogout = async () => {
+    await doSignOut();
     setUsuarioAutenticado(false);
     setRolUsuario('');
     setUserData(null); 
+    console.log(userData)
   };
 
   const contextValue = {
     usuarioAutenticado,
     rolUsuario,
-    userData, 
+    userData,
     handleLogin,
     handleLogout,
   };

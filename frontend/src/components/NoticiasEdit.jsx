@@ -16,7 +16,7 @@ const NoticiasEdit = ({deleteMode, setDeleteMode}) => {
   }
 
   const handleDeleteNews = () => {
-    deleteMode ? (setDeleteMode(false), setDeleteText("Borrar noticias")) : (setDeleteMode(true), setDeleteText("Dejar de noticias"));
+    deleteMode ? (setDeleteMode(false), setDeleteText("Borrar noticias")) : (setDeleteMode(true), setDeleteText("Dejar de borrar noticias"));
     console.log(deleteMode)
 
   }

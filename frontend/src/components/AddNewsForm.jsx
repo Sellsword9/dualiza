@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { addNoticia } from "../firebase/noticiasApi";
 import Swal from "sweetalert2";
+import { useAuth } from "../context/AuthContext";
 
 const AddNewsForm = () => {
   const [title, setTitle] = useState("")
@@ -8,6 +9,7 @@ const AddNewsForm = () => {
   const [img, setImg] = useState("")
   const [newURL, setNewURL] = useState("")
   const [userID, setUserID] = useState("")
+  const {userData} = useAuth()
   // const [pubDate, setPubDate] = useState("")
 
 
@@ -20,7 +22,7 @@ const AddNewsForm = () => {
         body: body,
         img: img,
         newURL: newURL,
-        userID: userID,
+        userID: userData,
         // pubDate: pubDate
       });
       console.log("Noticia añadido con id: ", nuevoProducto);
