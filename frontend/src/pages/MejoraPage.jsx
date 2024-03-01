@@ -1,4 +1,3 @@
-import React from 'react';
 import archivo from '../assets/mejoraPdf/guia de buenas practicas 2 (version 4).pdf';
 
 const MejoraPage = () => {

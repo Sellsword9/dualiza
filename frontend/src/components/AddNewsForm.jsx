@@ -8,8 +8,8 @@ const AddNewsForm = () => {
   const [body, setBody] = useState("")
   const [img, setImg] = useState("")
   const [newURL, setNewURL] = useState("")
-  const [userID, setUserID] = useState("")
   const {userData} = useAuth()
+  // const [userID, setUserID] = useState("")
   // const [pubDate, setPubDate] = useState("")
 
 
@@ -22,7 +22,7 @@ const AddNewsForm = () => {
         body: body,
         img: img,
         newURL: newURL,
-        userID: userData,
+        userID: userData.id,
         // pubDate: pubDate
       });
       console.log("Noticia añadido con id: ", nuevoProducto);
@@ -30,7 +30,7 @@ const AddNewsForm = () => {
       Swal.fire({
         icon:"success",
         title:"¡Insercion correcta!",
-        text:"Datos del producto insertados correctamente"
+        text:"Noticia insertada correctamente"
     })
 
       //Seteamos los estados al valor inicial
@@ -38,7 +38,7 @@ const AddNewsForm = () => {
       setBody("")
       setImg("")
       setNewURL("")
-      setUserID("")
+      // setUserID("")
       // setPubDate("")
       
     } catch (err) {
@@ -112,7 +112,7 @@ const AddNewsForm = () => {
         </div>
 
         {/* ID del usuario (si es necesario) */}
-        <div className="mb-4">
+        {/* <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="userID">
             ID del usuario
           </label>
@@ -125,7 +125,7 @@ const AddNewsForm = () => {
             onChange={(e) => setUserID(e.target.value)}
             required
           />
-        </div>
+        </div> */}
         {/* Fecha de publicacion de la noticia */}
         {/* <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="pubDate">

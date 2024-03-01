@@ -2,24 +2,28 @@ import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import AddNewsForm from "./AddNewsForm";
 
-const NoticiasEdit = ({deleteMode, setDeleteMode}) => {
+const NoticiasEdit = ({setReload}) => {
   const {rolUsuario} = useAuth();
   const [addNewsForm, setAddNewsForm] = useState(false)
-  const [deleteText, setDeleteText] = useState("Borrar noticias")
-
-  const esEditor = rolUsuario=='ROLE_EDITOR'||rolUsuario=='ROLE_ADMIN';
-  console.log(rolUsuario)
+  // const [deleteText, setDeleteText] = useState("Borrar noticias")
+  const esEditor = rolUsuario.includes('ROLE_EDITOR');
 
   
   const handleNewsForm = () => {
     addNewsForm == false ? setAddNewsForm(true) : setAddNewsForm(false)
+    setReload(true)
   }
 
-  const handleDeleteNews = () => {
-    deleteMode ? (setDeleteMode(false), setDeleteText("Borrar noticias")) : (setDeleteMode(true), setDeleteText("Dejar de borrar noticias"));
-    console.log(deleteMode)
-
-  }
+  // const handleDeleteNews = () => {
+  //   deleteMode ? (setDeleteMode(false), setDeleteText("Borrar noticias")) : (setDeleteMode(true), setDeleteText("Recargar noticias"));
+  //   console.log(deleteMode)
+  //   // setReload(true)
+  //   console.log(reload)
+    
+  // } 
+  // const handleEditNews = () => {
+  //   editMode == false ? setEditMode(true) : setEditMode(false)
+  // }
     
   
   return (
@@ -31,15 +35,19 @@ const NoticiasEdit = ({deleteMode, setDeleteMode}) => {
             Añadir noticias
           </button>}
           {addNewsForm && <button onClick={handleNewsForm} className="p-4  m-2 bg-orange-custom text-white hover:bg-orange-800 rounded-md border-solid ">
-            No añadir noticias
+            Dejar de añadir noticias
           </button>}
           
-          <button className="p-4  m-2 bg-blue-600 text-white hover:bg-blue-800 rounded-md border-solid ">
+          {/* {!editMode && <button onClick={handleEditNews} className="p-4  m-2 bg-blue-600 text-white hover:bg-blue-800 rounded-md border-solid ">
             Editar noticias
-          </button>
+          </button> }
+          {editMode && <button onClick={handleEditNews} className="p-4  m-2 bg-blue-600 text-white hover:bg-blue-800 rounded-md border-solid ">
+            Recargar noticias
+          </button> }
+          
           <button onClick={handleDeleteNews} className="p-4 m-2 bg-red-600 text-white hover:bg-red-800 rounded-md border-solid ">
             {deleteText}
-          </button>
+          </button> */}
         </div>
         {addNewsForm && <AddNewsForm/>}
         </div>
