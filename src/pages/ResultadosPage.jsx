@@ -139,9 +139,7 @@ const ResultadosPage = () => {
       </div>
       <div className='flex flex-col justify-center items-center'>
         <h1 className='text-3xl text-orange-custom w-auto bg-gris-claro p-8 rounded-md m-8 cursor-pointer'> Otros datos </h1>
-        <div className='text-xl text-white m-6 p-6 bg-gradient-to-b mr-10 ml-10 from-azul-negro to-azul-semi-oscuro rounded-3xl'>
-          <button onClick={downloadMejorasHlanz}><h1> Climatización y mejoras constructivas IES HLanz </h1></button>
-        </div>
+        <button className='text-xl text-white m-6 p-6 bg-gradient-to-b mr-10 ml-10 from-azul-negro to-azul-semi-oscuro rounded-3xl' onClick={downloadMejorasHlanz}><h1> Climatización y mejoras constructivas IES HLanz </h1></button>
       </div>
     </div>
   )
