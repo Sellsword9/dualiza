@@ -46,14 +46,14 @@
 
     Con la imagen del contenedor de DUALIZA en tus imágenes, puedes iniciar el contenedor:
 
-    ![imagen1](src\assets\readme\photo1709643418.jpeg)
+    ![imagen1](src\assets\images\photo1709643418.jpeg)
 
-    ![imagen2](src\assets\readme\photo1709643471.jpeg)
+    ![imagen2](src\assets\images\photo1709643471.jpeg)
 
     ```bash
     docker start [nombre contenedor docker]
     ```
-    ![imagen3](src\assets\readme\Captura.png)
+    ![imagen3](src\assets\images\Captura.png)
 
 
     Ahora podrás acceder a la aplicación web DUALIZA desde tu navegador.
