@@ -48,12 +48,12 @@
 
     ![imagen1](https://github.com/Sellsword9/dualiza/blob/main/src/assets/images/photo1709643418.jpeg)
 
-    ![imagen2](.\src\assets\images\photo1709643471.jpeg)
+    ![imagen2](https://github.com/Sellsword9/dualiza/blob/main/src/assets/images/photo1709643471.jpeg)
 
     ```bash
     docker start [nombre contenedor docker]
     ```
-    ![imagen3](src\assets\images\Captura.png)
+    ![imagen3](https://github.com/Sellsword9/dualiza/blob/main/src/assets/images/Captura.png)
 
 
     Ahora podrás acceder a la aplicación web DUALIZA desde tu navegador.
