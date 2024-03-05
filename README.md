@@ -46,7 +46,7 @@
 
     Con la imagen del contenedor de DUALIZA en tus imágenes, puedes iniciar el contenedor:
 
-    ![imagen1](https://github.com/Sellsword9/dualiza/src/assets/images/photo1709643418.jpeg)
+    ![imagen1](https://github.com/Sellsword9/dualiza/blob/main/src/assets/images/photo1709643418.jpeg)
 
     ![imagen2](.\src\assets\images\photo1709643471.jpeg)
 
